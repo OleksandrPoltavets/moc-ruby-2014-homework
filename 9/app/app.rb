@@ -15,5 +15,5 @@ get '/pb' do
   # puts response.body #this must show the JSON contents
 
   content = open("https://api.privatbank.ua/p24api/exchange_rates?json&date=01.12.2013").read
-  puts content
+  {currencies: content}.to_json
 end
