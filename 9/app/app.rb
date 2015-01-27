@@ -6,17 +6,20 @@ get '/' do
 end
 
 get '/time' do
-  "Current time is: #{Time.now}"
-
-  #https://api.privatbank.ua/p24api/exchange_rates?json&date=01.12.2013
+  time = Time.now
+  "Current time is: #{time}"
 end
 
-get '/pb' do
+get '/currencies' do
   date = RandTime.random.strftime('%d.%m.%Y')
-
   content = open("https://api.privatbank.ua/p24api/exchange_rates?json&date=#{date}").read
   result = JSON.parse(content)
+  { result: result }.to_json
+end
 
-  # {currencies: result}.to_json
+get '/currencies/usd' do
+  date = RandTime.random.strftime('%d.%m.%Y')
+  content = open("https://api.privatbank.ua/p24api/exchange_rates?json&date=#{date}").read
+  result = JSON.parse(content)
   { date: result["date"], bank: result["bank"], base_currency: result["baseCurrencyLit"], usd_sale: result["exchangeRate"][8]["saleRate"], usd_purchase: result["exchangeRate"][8]["purchaseRate"]}.to_json
 end
