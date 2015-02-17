@@ -1,0 +1,6 @@
+<h1> Request new archive record </h1>
+<% form_for archive, "/archives", :id => 'register' do |f| %>
+    <%= partial "form.erb", locals: {archive: archive, f: f} %>
+<% end %>
+
+

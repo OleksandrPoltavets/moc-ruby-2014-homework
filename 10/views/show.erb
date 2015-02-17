@@ -1,0 +1,18 @@
+<h1>Archive record: <%= archive.id %></h1>
+<h3>for date: <%= archive.request_date.strftime('%d.%m.%Y') %></h3>
+<dl>
+  <dt>Date</dt>
+  <dd><%= archive.request_date.strftime('%d.%m.%Y') %></dd>
+  <dt>Base currency</dt>
+  <dd><%= archive.base_currency %></dd>
+  <dt>Rates total</dt>
+  <dd><%= link_to(archive.exchange_rates.count, "/services/#{archive.id}/exchange_rates") %></dd>
+  <dt>Submitted</dt>
+  <dd><%= archive.created_at%></dd>
+</dl>
+<div class="row">
+  <div class="col-md-2 col-md-offset-8">
+    <%= link_to "Rates", "/archives/#{archive.id}/exchange_rates", class: "btn btn-success" %>
+    <%= link_to "Edit", "/archives/#{archive.id}/edit", class: "btn btn-primary" %>
+  </div>
+</div>

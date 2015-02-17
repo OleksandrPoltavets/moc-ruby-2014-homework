@@ -1,0 +1,31 @@
+<h1>Archives list page <%= page %> </h1>
+<div class="row">
+  <%= link_to "New", "/archives/new", class: "btn btn-primary col-md-2 col-md-offset-9" %>
+</div>
+<br/>
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Request date</th>
+    <th>Exchange Rates</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% archives.each do |arc| %>
+      <tr>
+        <td><%= link_to(arc.id, "/archives/#{arc.id}") %></td>
+        <td><%= arc.request_date %></td>
+        <td><%= link_to("Rates", "/archives/#{arc.id}/exchange_rates") %></td>
+        <td>
+          <% form_for arc, "/archives/#{arc.id}", method: :delete do |f| %><%= f.submit("Delete", "/archives/#{arc.id}", class: "btn btn-danger") %>
+              <%= link_to("Edit", "/archives/#{arc.id}/edit", class: "btn btn-success") %>
+          <% end %>
+
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= paginate archives %>

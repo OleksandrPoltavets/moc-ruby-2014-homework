@@ -1,0 +1,4 @@
+<h1> Edit service </h1>
+<% form_for archive, "/archives/#{archive.id}", method: :put do |f| %>
+    <%= partial "form.erb", locals: {archive: archive, f: f} %>
+<% end %>

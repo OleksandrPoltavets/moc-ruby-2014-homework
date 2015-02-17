@@ -1,0 +1,11 @@
+<div class="form-group form-group-lg">
+  <%= f.error_messages %>
+  <%= f.text_field_block :request_date, class: "form-control", type: 'date' %>
+  <%= f.text_field_block :base_currency, class: "form-control", placeholder: 'UAH' %>
+</div>
+<div class="row">
+  <div class="col-md-2 col-md-offset-8">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+    <%= link_to "Back", "/archives", class: "btn btn-success" %>
+  </div>
+</div>

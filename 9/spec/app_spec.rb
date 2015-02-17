@@ -6,7 +6,6 @@ describe "'PB Archived currencies App'" do
 
   it "should generate valid random date" do
     date = RandTime.random
-    # 20.times { game.roll(0) }
     expect(date.strftime('%d.%m.%Y').length).to eq(10)
     expect(date.strftime('%d.%m.%Y').split('.').length).to eq(3)
   end

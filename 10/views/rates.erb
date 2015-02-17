@@ -1,0 +1,26 @@
+<h1>Exchange rates for archive date: <%= date %> </h1>
+<table class="table table-bordered table-responsive table-striped">
+  <thead>
+  <tr>
+    <th>Currency</th>
+    <th>Sale rate NB</th>
+    <th>Purchase rate NB</th>
+    <th>Sale rate</th>
+    <th>Purchase rate</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% exchange_rates.each do |rate| %>
+      <tr>
+        <td><%= rate.currency %></td>
+        <td><%= rate.sale_rate_nb %></td>
+        <td><%= rate.purchase_rate_nb %></td>
+        <td><%= rate.sale_rate %></td>
+        <td><%= rate.purchase_rate %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to "Archives", "/archives" , class: "btn btn-success"%>
+
+<%= paginate exchange_rates %>
